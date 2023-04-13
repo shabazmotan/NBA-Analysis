@@ -1,35 +1,28 @@
--- Rename all columns in CSV to match these. SQL does not like numbers in column name
-Create TABLE RegSea_22(
-RK Int,
-Player VARCHAR(50) NOT NULL,
-Pos VARCHAR(5),
-Age Int,
-Team VARCHAR(3),
-GamesPlayed Int,
-GamesStarted Int,
-MinutesPlayed Float,
-FG Float,
-FGA Float,
-FG_Per Float,
-ThreePM Float,
-ThreePA Float,
-Three_Per Float,
-Two_PM Float,
-Two_PA Float,
-Two_Per Float,
-eFG_Per Float,
-FT Float,
-FTA Float,
-FT_Per Float,
-ORB Float,
-DRB Float,
-TRB Float,
-AST Float,
-STL Float,
-BLK Float,
-TOV Float,
-PF Float,
-PTS Float,
-TSA Float,
-TS_Per Float
-)
+Select * from RegSea_22 Limit 25;
+
+Select * from Playoff_22 Limit 25;
+
+Select Player, AVG(pts), AVG(FGPer), AVG(ThreePer), AVG(eFG_Per), AVG(FT_Per), AVG(TS_Per) from RegSea_22
+Group by player
+
+Drop View if Exists "Elite Scorers"
+
+-- Example View
+-- Trying to find out which players were the most efficient given a big enough sample size of games/shots per game
+Create View "Elite Scorers" as
+Select Player, Sum(GamesPlayed), AVG(TS_Per)
+From RegSea_22
+Where GamesPlayed >=55
+AND FGA>10
+Group by Player
+Order by AVG(TS_Per) DESC;
+
+Select * from "Elite Scorers"
+
+Create View "Reg Guards" as
+Select * 
+From RegSea_22
+Where Pos='PG' or Pos='SG'
+Group by Player;
+
+Select * from "Reg Guards"
