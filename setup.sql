@@ -35,6 +35,7 @@ PTS Float,
 TSA Float,
 TS_Per Float
 );
+Alter Table RegSea_22 add column id serial primary key;
 
 Drop Table if exists Playoff_22;
 
@@ -72,3 +73,4 @@ PTS Float,
 TSA Float,
 TS_Per Float
 );
+Alter Table Playoff_22 add column id serial primary key;
