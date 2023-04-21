@@ -7,7 +7,7 @@ defensive players of the NBA based on steals per game and blocks per game in the
 
 # Technologies Used
 * NBA 2021-2022 Dataset from Kaggle https://www.kaggle.com/datasets/vivovinco/nba-player-stats
-* Python
+* Python: 
  -SQLAlchemy
  -Flask
 * SQL Database (postgresql)
