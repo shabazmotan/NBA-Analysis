@@ -159,7 +159,7 @@ def Young():
     filter(RegSeason.gamesplayed>41).\
     filter(RegSeason.team!='TOT').\
     filter(RegSeason.age<23)
-    results=[{"id":rookie.id, "player": rookie.player, "Age": rookie.age, "Minutes Played": rookie.minutesplayed, "PTS": rookie.pts,"3P_per": (rookie.threeper*100), "FT_per": (rookie.ft_per*100),"TS_per": (rookie.ts_per*100), "EFG_per": (rookie.efg_per*100)} for rookie in Young]
+    results=[{"id":rookie.id, "player": rookie.player, "Age": rookie.age, "Minutes Played": rookie.minutesplayed, "PTS": rookie.pts,"three_per": (rookie.threeper*100), "FT_per": (rookie.ft_per*100),"TS_per": (rookie.ts_per*100), "AST": rookie.ast} for rookie in Young]
     
     print(results)
     

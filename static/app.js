@@ -129,11 +129,15 @@ function EffPlot()
   
   let playerlist=[]
   let tslist=[]
-  let efglist=[]
+  let ptslist=[]
+  let astlist=[]
+  let threeperlist=[]
   for (x of data3){
     playerlist.push(x.player)
     tslist.push(x.TS_per)
-    efglist.push(x.EFG_per)
+    astlist.push(x.AST)
+    threeperlist.push(x.three_per)
+    ptslist.push(x.PTS)
     }
   // Trace for Plotly
   let trace1={
@@ -142,7 +146,7 @@ function EffPlot()
     y: tslist,
     type: "bar",
     marker:{
-      color: '#0E63F5',
+      color: '#FA0606',
       opacity: .8,
       width: 7.0
     }
@@ -150,26 +154,52 @@ function EffPlot()
   console.log(trace1)
   // Trace2 for Plotly
   let trace2={
-    name: "EFG% per Player",
+    name: "Assists per Player",
     x: playerlist,
-    y: efglist,
+    y: astlist,
     type: "bar",
     marker:{
-      color: '#FA0606',
+      color: '#8C17E3',
       opacity: .8,
       width: 7.0
 
     }
   }
+    // Trace3 for Plotly
+    let trace3={
+      name: "Three % per Player",
+      x: playerlist,
+      y: threeperlist,
+      type: "bar",
+      marker:{
+        color: '#2ACF0C',
+        opacity: .8,
+        width: 7.0
+  
+      }
+    }
+        // Trace4 for Plotly
+    let trace4={
+      name: "PTS per Player",
+      x: playerlist,
+      y: ptslist,
+      type: "bar",
+      marker:{
+        color: '#0E63F5',
+        opacity: .8,
+        width: 7.0
+  
+      }
+    }
   console.log(trace2)
   // Layout for Plotly
   let layout={
     xaxis:{'range': [0,100]},
-    yaxis: {'range': [0,100]},
-    title: "Efficiency Metrics Across NBA Rookies",
+    yaxis: {'range': [0,80]},
+    title: "Offensive Metrics Across NBA Youngsters",
     barmode: "group" 
   }
-  let bardata=[trace1, trace2]
+  let bardata=[trace1, trace2, trace3, trace4]
   // Call Plotly
   Plotly.newPlot("bar-3", bardata, layout)
 })}

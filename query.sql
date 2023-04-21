@@ -19,10 +19,16 @@ Order by AVG(TS_Per) DESC;
 
 Select * from "Elite Scorers"
 
+-- All Guards in Regular Season with their AVG TS% 
+Drop View if Exists "Reg Guards"
+
 Create View "Reg Guards" as
-Select * 
+Select Player, SUM(GamesPlayed)/Count(GamesPlayed), AVG(TS_Per)
 From RegSea_22
 Where Pos='PG' or Pos='SG'
 Group by Player;
 
 Select * from "Reg Guards"
+
+
+
